@@ -5,6 +5,7 @@ of any pair of numbers in the array that sum to the target.
 The order of the indexes in the result doesn't matter. If you pair is found return an empty array.
 """
 
+
 from typing import List
 
 
