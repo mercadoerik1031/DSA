@@ -1,4 +1,6 @@
 """
+https://leetcode.com/problems/valid-sudoku/submissions/1498796852/
+
 Given a partially completed 9x9 Sudoku board, determine if the current state of the board adheres
 to the rules of the game:
 
