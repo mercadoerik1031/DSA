@@ -1,4 +1,6 @@
-'''
+"""
+https://leetcode.com/problems/remove-nth-node-from-end-of-list/description/
+
 Return the head of a singly linked list after removing the kth node from the end of it.
 
 Example:
@@ -6,31 +8,41 @@ Example:
     1 -> 2 -> 4 -> 7 -> 3 -> None
     
     1 -> 2 -> 4 -> 3 -> None
-'''
+"""
 
-from typing import List, Optional
+from typing import Optional
+
 
 class ListNode:
     def __init__(self, val: int) -> None:
         self.val = val
         self.next = None
-        
 
-def remove_kth_from_end(head: ListNode, k: int) -> ListNode:
+
+def remove_kth_from_end(head: Optional[ListNode], k: int) -> Optional[ListNode]:
+    if not head:
+        return None
+
     if k < 1:
-        return head
-    
-    slow = head
+        raise ValueError
+
+    dummy = ListNode(-1)
+    dummy.next = head
+    slow = dummy
     fast = head
-    
-    while fast.next:
-        if k == 0:
-            slow = slow.next
-            fast = fast.next
-        else:
-            fast = fast.next
-            k -= 1
-        
-    slow.next = fast
-    
-    return head
+
+    for _ in range(k):
+        if not fast:
+            raise ValueError
+        fast = fast.next
+
+    while fast:
+        fast = fast.next
+        slow = slow.next
+
+    slow.next = slow.next.next
+
+    return dummy.next
+
+
+# Time Complexity: O(n), Space Complexity: O(1)
