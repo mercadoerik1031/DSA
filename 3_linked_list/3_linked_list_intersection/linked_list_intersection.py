@@ -28,4 +28,5 @@ def find_intersection(
     return curr1
 
 
-# Time Complexity: O(n), Space Complexity: O(1)
+# Time Complexity: O(n + m), Space Complexity: O(1)
+# n = length of list1, m = length of list2
