@@ -1,0 +1,1 @@
+from happy_number import is_happy_number
