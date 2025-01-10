@@ -1,6 +1,5 @@
 import pytest
-from happy_number import is_happy_number  # Assuming your function is in happy_number.py
-
+from happy_number import is_happy_number 
 
 def test_known_happy_numbers():
     """Test numbers that are known to be happy numbers"""
