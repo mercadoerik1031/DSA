@@ -1,5 +1,5 @@
 """
-https://leetcode.com/problems/intersection-of-two-linked-lists/submissions/1502164968/
+https://leetcode.com/problems/intersection-of-two-linked-lists/description/
 
 Return the node where two singly linked lists intersect. If the linked lists don't intersect,
 return null
