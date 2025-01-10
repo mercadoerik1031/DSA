@@ -2,23 +2,45 @@ import os
 import random
 
 
-def get_random_questions() -> None:
-    question_list = []
+def get_random_questions() -> list:
+    links = []
 
-    for folder in os.listdir("./"):
-        if folder[0].isnumeric():
-            list_of_question = os.listdir(f"./{folder}")
-            random_question = random.choice(list_of_question)
-            question_list.append((folder, random_question))
+    # Step 1: Collect folders starting with a number and select random files
+    folder_list = [
+        os.path.join(".", item) for item in os.listdir(".") if item[0].isnumeric()
+    ]
 
-    print()
-    for i, question in enumerate(question_list):
-        print(f"{i + 1}. Folder: {question[0]}, Question: {question[1]}")
-    print()
+    # Step 2: Randomly select one file from each folder
+    questions_folder = [
+        os.path.join(folder, random.choice(os.listdir(folder)))
+        for folder in folder_list
+        if os.path.isdir(folder)
+    ]
+
+    # Step 3: Collect Python files, skipping test or cache files
+    all_questions = [
+        os.path.join(folder, file)
+        for folder in questions_folder
+        if os.path.isdir(folder)
+        for file in os.listdir(folder)
+        if file.endswith(".py") and "test" not in file and "cache" not in file
+    ]
+
+    # Step 4: Extract the second line or mark as missing
+    for question in all_questions:
+        with open(question, "r") as file:
+            file.readline()  # Skip the first line
+            second_line = file.readline().strip()
+            links.append(second_line if second_line else "Missing Link")
+
+    return links
 
 
 def main():
-    get_random_questions()
+    links = get_random_questions()
+
+    for link in links:
+        print(link)
 
 
 if __name__ == "__main__":
