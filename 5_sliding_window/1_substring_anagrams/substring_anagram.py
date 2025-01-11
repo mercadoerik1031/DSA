@@ -1,5 +1,5 @@
 """
-https://leetcode.com/problems/find-all-anagrams-in-a-string/description/?utm_source=chatgpt.com
+https://leetcode.com/problems/find-all-anagrams-in-a-string/description/
 
 Given two strings, s and t, both consisting of lowercase English letters, return the number of 
 substrings in s that are anagrams of t.
