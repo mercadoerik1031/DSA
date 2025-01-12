@@ -38,3 +38,6 @@ def find_insertion_index(nums: List[int], target: int) -> int:
             left = mid + 1
 
     return left
+
+
+# Time Complexity: O(log n), Space Complexity: O(1)
