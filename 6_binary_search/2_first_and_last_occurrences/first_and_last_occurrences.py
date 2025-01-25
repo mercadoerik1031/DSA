@@ -12,48 +12,38 @@ Explanation:
     The first and last occurrences of number 4 are indexes 3 and 5, respectively.
 """
 
-
 from typing import List
 
 
 def first_and_last_occurrence(nums: List[int], target: int) -> List[int]:
-    if not nums:
-        return [-1, -1]
+    def binary_search(is_searching_left: bool = False) -> int:
+        left, right = 0, len(nums) - 1
+        index = -1
 
-    index = binary_search(nums, target)
+        while left <= right:
+            mid = (left + right) // 2
 
-    if index == -1:
-        return [-1, -1]
+            if nums[mid] > target:
+                right = mid - 1
 
-    left = right = index
+            elif nums[mid] < target:
+                left = mid + 1
 
-    while left >= 0 and nums[left] == nums[index]:
-        left -= 1
-    left += 1
+            else:
+                index = mid
 
-    while right <= len(nums) - 1 and nums[right] == nums[index]:
-        right += 1
-    right -= 1
+                if is_searching_left:
+                    right = mid - 1
 
-    return [left, right]
+                else:
+                    left = mid + 1
 
+        return index
 
-def binary_search(arr: List[int], t: int) -> int:
-    left, right = 0, len(arr) - 1
+    left_index = binary_search(True)
+    right_index = binary_search(False)
 
-    while left <= right:
-        mid = (left + right) // 2
-
-        if arr[mid] == t:
-            return mid
-
-        elif arr[mid] > t:
-            right = mid - 1
-
-        else:
-            left = mid + 1
-
-    return -1
+    return [left_index, right_index]
 
 
-# Time Complexity: O(n), Space Complexity: O(1)
+# Time Complexity: O(log n), Space Complexity: O(1)
