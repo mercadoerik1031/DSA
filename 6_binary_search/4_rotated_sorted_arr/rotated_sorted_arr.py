@@ -1,4 +1,4 @@
-'''
+"""
 https://leetcode.com/problems/search-in-rotated-sorted-array/description/
 
 A rotated sorted array is an array of numbers sorted in ascending order, in which a portion
@@ -11,8 +11,7 @@ If the target value is not present, return -1
 Example:
     Input: nums = [8, 9, 1, 2, 3, 4, 5, 6, 7], target = 1
     Output: 2
-'''
-
+"""
 
 from typing import List
 
@@ -25,7 +24,7 @@ def rotated_binary_search(nums: List[int], target: int) -> int:
 
         if nums[mid] == target:
             return mid
-        
+
         # Check if left is sorted
         elif nums[left] <= nums[mid]:
             # if sorted check if target in that range
@@ -40,12 +39,15 @@ def rotated_binary_search(nums: List[int], target: int) -> int:
         # Check if right is sorted
         elif nums[mid] <= nums[right]:
             # if sorted check if target in that range
-            if nums[mid] < target < nums[right]:
+            if nums[mid] < target <= nums[right]:
                 # move left
                 left = mid + 1
-            
+
             else:
                 # move right
                 right = mid - 1
 
     return -1
+
+
+# Time Complexity: O(log n), Space Complexity: O(1)
