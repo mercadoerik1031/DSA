@@ -23,4 +23,5 @@ def largest_number_to_right(nums: List[int]) -> List[int]:
         stack.append(nums[i])
     return res
 
-largest_number_to_right([5,2,4,6,1])
+
+# Time Complexity: O(n), Space Complexity: O(1)
