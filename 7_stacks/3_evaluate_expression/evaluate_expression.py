@@ -1,11 +1,11 @@
-'''
+"""
 Given a string representing a mathematical expression containing integers,
 parentheses, addition, and subtraction operators, evaluate and return the result of the expression.
 
 Example:
     Input: s = "18-(7+(2-4))"
     Output: 13
-'''
+"""
 
 
 def evaluate_expression(s: str) -> int:
@@ -16,17 +16,17 @@ def evaluate_expression(s: str) -> int:
         if c.isdigit():
             curr_num = curr_num * 10 + int(c)
 
-        elif c == '-' or c == '+':
+        elif c == "-" or c == "+":
             res += curr_num * sign
-            sign = -1 if c == '-' else 1
+            sign = -1 if c == "-" else 1
             curr_num = 0
 
-        elif c == '(':
+        elif c == "(":
             stack.append(res)
             stack.append(sign)
             res, sign = 0, 1
 
-        elif c == ')':
+        elif c == ")":
             res += sign * curr_num
             res *= stack.pop()
             res += stack.pop()
