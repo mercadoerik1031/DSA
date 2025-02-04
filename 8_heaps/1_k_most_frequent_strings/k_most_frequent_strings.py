@@ -15,9 +15,9 @@ Constraints:
     k <= n, where n denotes the length of the array
 """
 
+
 import heapq
 from typing import List
-from collections import Counter
 
 
 class Pair:
@@ -27,18 +27,25 @@ class Pair:
 
     def __lt__(self: object, other: object) -> bool:
         if self.freq == other.freq:
-            return self.string < other.string
+            return self.string > other.string
 
-        return self.freq > other.freq
+        return self.freq < other.freq
 
 
 def k_most_frequent_strs(strs: List[str], k: int) -> List[str]:
-    freqs = Counter(strs)
+    frequencies = {}
+    for word in strs:
+        frequencies[word] = frequencies.get(word, 0) + 1
 
-    max_heap = [Pair(k, v) for k, v in freqs.items()]
-    heapq.heapify(max_heap)
+    heap = []
 
-    return [heapq.heappop(max_heap).string for _ in range(k)]
+    for word, count in frequencies.items():
+        heapq.heappush(heap, Pair(word, count))
+
+        if len(heap) > k:
+            heapq.heappop(heap)
+
+    return [heapq.heappop(heap).string for _ in range(k)][::-1]
 
 
 # Time Complexity: O(n + k log(n)), Space Complexity: O(n)
