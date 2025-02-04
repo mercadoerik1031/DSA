@@ -48,4 +48,4 @@ def k_most_frequent_strs(strs: List[str], k: int) -> List[str]:
     return [heapq.heappop(heap).string for _ in range(k)][::-1]
 
 
-# Time Complexity: O(n + k log(n)), Space Complexity: O(n)
+# Time Complexity: O(n log(n)), Space Complexity: O(n)
