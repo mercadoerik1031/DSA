@@ -31,7 +31,7 @@ def get_random_questions() -> list:
         with open(question, "r") as file:
             file.readline()  # Skip the first line
             second_line = file.readline().strip()
-            links.append(second_line if second_line else "Missing Link")
+            links.append(second_line if 'leetcode' in second_line else "Missing Link")
 
     return links
 
