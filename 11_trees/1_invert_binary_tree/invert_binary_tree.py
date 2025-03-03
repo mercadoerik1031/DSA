@@ -13,15 +13,40 @@ class TreeNode:
         self.right = None
 
 
-def invert_binary_tree(root: TreeNode) -> TreeNode:
+def invert_binary_tree_recursive(root: TreeNode) -> TreeNode:
     if not root:
-        return
+        return None
 
     # swap left and right nodes
     root.left, root.right = root.right, root.left
 
     # recessively invert the left and right subtrees
-    invert_binary_tree(root.left)
-    invert_binary_tree(root.right)
+    invert_binary_tree_recursive(root.left)
+    invert_binary_tree_recursive(root.right)
 
     return root
+
+
+# Time Complexity: O(n), Space Complexity: O(1)
+
+
+def invert_binary_tree_iteratively(root: TreeNode) -> TreeNode:
+    if not root:
+        return None
+
+    stack = [root]
+
+    while stack:
+        node = stack.pop()
+        node.left, node.right = node.right, node.left
+
+        if node.left:
+            stack.append(node.left)
+
+        if node.right:
+            stack.append(node.right)
+
+    return root
+
+
+# Time Complexity: O(n), Space Complexity: O(n)
