@@ -1,4 +1,6 @@
 """
+https://leetcode.com/problems/alternating-groups-ii/description/?envType=daily-question&envId=2025-03-09
+
 There is a circle of red and blue tiles. You are given an array of integers colors and an integer k. The color of tile i is represented by colors[i]:
 
 colors[i] == 0 means that tile i is red.
