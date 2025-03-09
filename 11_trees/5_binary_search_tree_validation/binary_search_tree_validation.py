@@ -1,4 +1,6 @@
 """
+https://leetcode.com/problems/validate-binary-search-tree/description/
+
 Verify whether a binary tree is a valid binary search tree (BST).
 A BST is a binary tree where each node meets the following criteria
     - A node's left subtree contains only nodes of lower values than the node's value
